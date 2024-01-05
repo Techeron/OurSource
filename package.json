@@ -1,0 +1,13 @@
+{
+  "name": "oursource",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/techeron/oursource",
+  "author": "codokk101 <codokk101@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1"
+  }
+}
