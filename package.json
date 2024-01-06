@@ -21,9 +21,14 @@
   ],
   "author": "codokk101 <codokk101@gmail.com>",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
   "dependencies": {
     "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.19",
