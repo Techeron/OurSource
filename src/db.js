@@ -21,6 +21,16 @@ export default {
       console.error("[DB] Failed to connect to PostgreSQL database:", error);
     }
   },
+  async query(query, values) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await client.query(query, values);
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  },
   async set(key, value) {
     try {
       const query = "INSERT INTO your_table (key, value) VALUES ($1, $2)";

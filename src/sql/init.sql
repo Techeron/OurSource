@@ -1,30 +1,30 @@
 -- Create Guild table if not exists
 CREATE TABLE IF NOT EXISTS Guild (
-  id SERIAL PRIMARY KEY,
-  roleChannel INT
+  id BIGINT PRIMARY KEY,
+  roleId BIGINT
 );
 
 -- Create Channel table if not exists
 CREATE TABLE IF NOT EXISTS Channel (
-  id SERIAL PRIMARY KEY
+  id BIGINT PRIMARY KEY
 );
 
 -- Create Project table if not exists
 CREATE TABLE IF NOT EXISTS Project (
-  id SERIAL PRIMARY KEY,
-  guildId INT REFERENCES Guild(id),
-  channelId INT REFERENCES Channel(id)
+  id BIGINT PRIMARY KEY,
+  guildId BIGINT REFERENCES Guild(id),
+  channelId BIGINT REFERENCES Channel(id)
 );
 
 -- Create Role table if not exists
 CREATE TABLE IF NOT EXISTS Role (
-  id SERIAL PRIMARY KEY,
-  projectId INT REFERENCES Project(id),
+  id BIGINT PRIMARY KEY,
+  projectId BIGINT REFERENCES Project(id),
   isDev BOOLEAN
 );
 
 -- Create Webhook table if not exists
 CREATE TABLE IF NOT EXISTS Webhook (
-  id SERIAL PRIMARY KEY,
-  projectId INT REFERENCES Project(id)
+  id BIGINT PRIMARY KEY,
+  projectId BIGINT REFERENCES Project(id)
 );
