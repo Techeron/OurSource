@@ -1,15 +1,17 @@
+---
 name: Release Charts
 
 on:
   push:
-    tags: ["v*.*.*"]
+    branches:
+      - main
 
 jobs:
   release:
     permissions:
-      contents: write # to push chart release and create a release (helm/chart-releaser-action)
-      packages: write # needed for ghcr access
-      id-token: write # needed for keyless signing
+      contents: write
+      packages: write
+      id-token: write
 
     runs-on: ubuntu-latest
     steps:
