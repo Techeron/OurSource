@@ -1,5 +1,4 @@
 ---
-
 replicaCount: 1
 
 image:
@@ -53,9 +52,7 @@ securityContext:
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
-  type: ClusterIP
-  port: 3000
+service: {}
 
 ingress:
   enabled: false

@@ -1,0 +1,17 @@
+---
+version: "3.8"
+services:
+  oursource:
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags: ["dev"]
+
+    image: ghcr.io/Techeron/OurSource:latest
+    container_name: oursource
+
+    environment: 
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_APPLICATION_ID=${DISCORD_APPLICATION_ID}
+    volumes: []
