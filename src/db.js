@@ -1,4 +1,7 @@
 import pg from "pg";
+import fs from "fs";
+const sqlScript = fs.readFileSync("./src/sql/init.sql", "utf-8");
+
 const client = new pg.Client({
   user: "dev",
   host: "localhost",
@@ -12,6 +15,8 @@ export default {
     try {
       await client.connect();
       console.log("[DB] Connected to PostgreSQL database");
+      await client.query(sqlScript);
+      console.log("[DB] Initialized database");
     } catch (error) {
       console.error("[DB] Failed to connect to PostgreSQL database:", error);
     }
