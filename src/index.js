@@ -2,6 +2,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+/* Local Imports */
+import { handleModalSubmit } from "./events/Modal.js";
+import db from "./db.js";
 /* Discord.js Imports */
 import {
   Client,
@@ -13,12 +16,13 @@ import {
 } from "discord.js";
 /* dotenv Imports */
 import "dotenv/config";
+/* Database Setup */
+// import db from "./db.js";
 /* File Locations */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
-/* Discord Client */
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 const commandBody = [];
@@ -31,7 +35,6 @@ for (const folder of commandFolders) {
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = (await import(filePath)).default;
-    console.log(Object.keys(command));
     if ("data" in command && "execute" in command) {
       client.commands.set(command.data.name, command);
       commandBody.push(command.data.toJSON());
@@ -44,34 +47,41 @@ for (const folder of commandFolders) {
 }
 // Command Execution
 client.on(Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
-
-  const command = interaction.client.commands.get(interaction.commandName);
-
-  if (!command) {
-    console.error(`No command matching ${interaction.commandName} was found.`);
-    return;
-  }
-
-  try {
-    await command.execute(interaction);
-  } catch (error) {
-    console.error(error);
-    if (interaction.replied || interaction.deferred) {
-      await interaction.followUp({
-        content: "There was an error while executing this command!",
-        ephemeral: true,
-      });
-    } else {
-      await interaction.reply({
-        content: "There was an error while executing this command!",
-        ephemeral: true,
-      });
+  if (interaction.isChatInputCommand()) {
+    // Handle Slash Commands
+    const command = interaction.client.commands.get(interaction.commandName);
+    if (!command) {
+      console.error(
+        `No command matching ${interaction.commandName} was found.`
+      );
+      return;
     }
+
+    try {
+      await command.execute(interaction);
+    } catch (error) {
+      console.error(error);
+      if (interaction.replied || interaction.deferred) {
+        await interaction.followUp({
+          content: "There was an error while executing this command!",
+          ephemeral: true,
+        });
+      } else {
+        await interaction.reply({
+          content: "There was an error while executing this command!",
+          ephemeral: true,
+        });
+      }
+    }
+  } else if (interaction.isModalSubmit()) {
+    // Handle Modal Responses
+    handleModalSubmit(interaction);
   }
 });
 // Login
-client.login(process.env.DISCORD_TOKEN).then(() => {
+client.login(process.env.DISCORD_TOKEN).then(async () => {
+  // DB Connection
+  await db.connect();
   // Guilds
   client.guilds.fetch().then((guilds) => {
     const rest = new REST().setToken(process.env.DISCORD_TOKEN);
