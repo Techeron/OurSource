@@ -24,7 +24,7 @@ const execute = async (interaction) => {
     return;
   }
   // Get the Channel and message, then make the post
-  const channel = interaction.channel;
+  const channel = interaction.options.getChannel("channel");
   const message =
     interaction.options.getString("message") ||
     "Join a project by reacting to this message!";

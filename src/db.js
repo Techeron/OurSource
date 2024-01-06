@@ -22,6 +22,7 @@ export default {
     }
   },
   async query(query, values) {
+    console.log(query);
     return new Promise(async (resolve, reject) => {
       try {
         const result = await client.query(query, values);
