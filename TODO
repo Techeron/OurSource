@@ -1,0 +1,7 @@
+# TODO
+
+- [ ] : Write the documentation
+- [ ] : Write the Helm chart
+- [x] : Write the Dockerfile
+- [ ] : Write the docker-compose.yaml
+- [ ] : Write the README.md

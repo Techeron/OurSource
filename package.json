@@ -1,8 +1,24 @@
 {
   "name": "oursource",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/techeron/oursource",
+  "description": "A brief description of your project",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techeron/oursource"
+  },
+  "keywords": [
+    "nodejs",
+    "discord-bot",
+    "automation"
+  ],
   "author": "codokk101 <codokk101@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -13,5 +29,12 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
