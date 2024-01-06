@@ -134,3 +134,8 @@ dist
 
 # Databases
 *.sqlite
+
+# Chart dependencies
+/charts/*/charts
+*.tgz
+Chart.lock
