@@ -4,5 +4,4 @@
 - [ ] : Write the Helm chart
 - [x] : Write the Dockerfile
 - [ ] : Write the docker-compose.yaml
-- [ ] : Write the Makefile
 - [ ] : Write the README.md
