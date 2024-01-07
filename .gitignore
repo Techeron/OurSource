@@ -139,3 +139,6 @@ dist
 /charts/*/charts
 *.tgz
 Chart.lock
+
+# Local helm values files
+*values-local.y*ml
