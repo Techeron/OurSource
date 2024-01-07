@@ -94,8 +94,6 @@ client.login(process.env.DISCORD_TOKEN).then(async () => {
 });
 
 const registerCommands = async (rest, guildId, commands) => {
-  console.log(guildId);
-  console.log(commands);
   const data = await rest.put(
     Routes.applicationGuildCommands(
       process.env.DISCORD_APPLICATION_ID,
