@@ -2,12 +2,15 @@ import pg from "pg";
 import fs from "fs";
 const sqlScript = fs.readFileSync("./src/sql/init.sql", "utf-8");
 
+// Client need to use POSTGRES_PASSWORD, POSTGRES_USER, POSTGRES_DB, POSTGRES_ADDR, POSTGRES_PORT env variables
+// Using locahost as default can be a problem for container as it will refer as the container where the app is running
+// and not where the database is running
 const client = new pg.Client({
-  user: "dev",
-  host: "localhost",
-  database: "dev",
-  password: "testpass",
-  port: 5432,
+  user: process.env.POSTGRES_USER,
+  host: process.env.POSTGRES_ADDR,
+  database: process.env.POSTGRES_DB,
+  password: process.env.POSTGRES_PASSWORD,
+  port: process.env.POSTGRES_PORT,
 });
 
 export default {
