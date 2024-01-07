@@ -11,6 +11,8 @@ services:
     environment: 
       - DISCORD_TOKEN=${DISCORD_TOKEN}
       - DISCORD_APPLICATION_ID=${DISCORD_APPLICATION_ID}
+    depends_on:
+      - postgres
 
   postgres:
     image: bitnami/postgresql:16.1.0-debian-11-r18
