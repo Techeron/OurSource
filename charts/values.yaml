@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: "ghcr.io/Techeron/OurSource"
+  repository: "ghcr.io/techeron/oursource"
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -15,15 +15,16 @@ fullnameOverride: ""
 env: []
 # env::
 #   - name: something
-#     name: blablabla
+#     value: blablabla
 
 # Environement variables to pass to the container from a secret or configmap
+# secret should be use for sensitive data and configmap for non-sensitive data
 envFrom: []
 # envFrom:
 #   - type: secret
-#     name: mysecret
+#     name: mysecret      The name of the secret object to map into the environment.
 #   - type: configmap
-#     name: myconfigmap
+#     name: myconfigmap   The name of the configmap object to map into the environment.
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -13,12 +13,17 @@
 
 ### Environement variables
 
-The following environement variables are required to run the bot :
-- `DISCORD_TOKEN` : The token of the Discord bot
-- `DISCORD_APPLICATION_ID` : The application ID of the Discord bot
-- `POSTGRES_PASSWORD` : The password of the `postgres` user for running with `docker compose`
-- `POSTGRES_USER` : The username of the `postgres` user for running with `docker compose`
-- `POSTGRES_DB` : The name of the `postgres` database for running with `docker compose`
+The following environment variables are required to run the bot :
+
+| Name | Description | Type | Default value |
+| ---- | ----------- | ---- | ------------- |
+| `DISCORD_TOKEN` | The token of the Discord bot | `string` | `null` |
+| `DISCORD_APPLICATION_ID` | The application ID of the Discord bot | `string` | `null` |
+| `POSTGRES_ADDR` | The address of the `postgres` database | `string` | `null` |
+| `POSTGRES_PORT` | The port of the `postgres` database, common port used is `5432` | `number` | `null` |
+| `POSTGRES_USER` | The username of the `postgres` user | `string` | `null` |
+| `POSTGRES_PASSWORD` | The password of the `postgres` user | `string` | `null` |
+| `POSTGRES_DB` | The name of the `postgres` database | `string` | `null` |
 
 ### Docker
 
