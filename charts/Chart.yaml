@@ -5,3 +5,17 @@ description: A Helm chart for deploying OurSource discord bot
 type: application
 version: 0.1.0
 appVersion: "v0.0.1"
+icon: file://assets/icon.png
+keywords:
+  - discord
+  - bot
+  - javascript
+  - nodejs
+  - project management
+  - open source
+home: https://techeron.github.io/oursource/
+maintainers:
+  - name: Codokk
+    email: codokk101@gmail.com
+  - name: christopherime
+    email: christopherime@me.com
