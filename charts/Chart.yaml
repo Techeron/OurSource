@@ -5,7 +5,3 @@ description: A Helm chart for deploying OurSource discord bot
 type: application
 version: 0.1.0
 appVersion: "v0.0.1"
-dependencies:
-  - name: postgresql
-    version: "13.2.27"
-    repository: https://charts.bitnami.com/bitnami
