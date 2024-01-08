@@ -103,6 +103,5 @@ const registerCommands = async (rest, guildId, commands) => {
       body: commands,
     }
   );
-
   console.log("Successfully reloaded " + data.length + " (/) commands.");
 };
